@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <script>
-        // Security: No entry without login
         if(localStorage.getItem("userAuth") !== "active") {
             window.location.href = "index.html";
         }
@@ -15,22 +14,21 @@
 <body class="bg-black text-zinc-100 min-h-screen p-6 font-sans">
     <div class="max-w-3xl mx-auto mt-10">
         <div class="flex justify-between items-center mb-10">
-            <h1 class="text-3xl font-black tracking-tighter uppercase">Architect Console</h1>
+            <h1 class="text-3xl font-black tracking-tighter uppercase italic">Architect Console</h1>
             <button onclick="logout()" class="text-xs bg-zinc-800 px-4 py-2 rounded-full hover:bg-red-900 transition">LOGOUT</button>
         </div>
 
         <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl shadow-2xl">
             <label class="block text-sm text-zinc-500 mb-4 uppercase tracking-widest font-bold">Neural Prompt Input</label>
             <textarea id="promptInput" 
-                placeholder="Ex: Ultra-luxury Jewelry Boutique with dark mode and rose gold..." 
+                placeholder="Ex: Luxury Jewelry Store with black and gold theme..." 
                 class="w-full h-40 bg-black border border-zinc-800 rounded-2xl p-5 text-white outline-none focus:border-white transition resize-none"></textarea>
             
-            <button onclick="generateUI()" id="genBtn" class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all">
+            <button onclick="generateUI()" id="genBtn" class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.01] active:scale-95 transition-all uppercase text-sm tracking-tighter">
                 GENERATE WORLD-CLASS UI
             </button>
         </div>
-
-        <p class="text-center text-zinc-600 text-[10px] mt-10 uppercase tracking-[0.2em]">Garud X Neural Engine v1.0</p>
+        <p id="status" class="text-center text-zinc-600 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold"></p>
     </div>
 
     <script>
@@ -41,21 +39,37 @@
 
         async function generateUI() {
             const prompt = document.getElementById('promptInput').value;
+            const status = document.getElementById('status');
             const btn = document.getElementById('genBtn');
-            
+            const tunnelURL = "https://northeast-jumping-ppc-dictionaries.trycloudflare.com"; 
+
             if(!prompt) return alert("Pehle prompt toh dalo bhai!");
 
-            btn.innerText = "ESTABLISHING NEURAL LINK...";
             btn.disabled = true;
+            status.innerText = "ESTABLISHING NEURAL LINK...";
 
-            console.log("🚀 Sending to GARUD Engine: " + prompt);
-            
-            // Abhi ke liye ye alert dega, next step mein hum ise Termux Engine se jochenge
-            setTimeout(() => {
-                alert("Prompt Received: " + prompt + "\nNext: Connecting to Termux Server...");
-                btn.innerText = "GENERATE WORLD-CLASS UI";
+            try {
+                const response = await fetch(`${tunnelURL}/generate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                if(response.ok) {
+                    status.innerText = "BUILD SUCCESSFUL! DEPLOYING TO GITHUB...";
+                    setTimeout(() => {
+                        window.open("https://nk-digital-media.github.io/GARUD-X-Final/generated_project.html", "_blank");
+                        btn.disabled = false;
+                        status.innerText = "READY FOR NEXT ARCHITECTURAL BUILD";
+                    }, 5000); 
+                } else {
+                    throw new Error("Server error");
+                }
+            } catch (err) {
+                alert("Error: Link failed. Check if Termux Engine is running.");
                 btn.disabled = false;
-            }, 1000);
+                status.innerText = "LINK FAILED";
+            }
         }
     </script>
 </body>
