@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARUD X - Architect Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Auth Check
         if(localStorage.getItem("userAuth") !== "active") {
             window.location.href = "index.html";
         }
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GARUD X - Console</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-zinc-100 min-h-screen p-6 font-sans">
     <div class="max-w-3xl mx-auto mt-10">
@@ -21,14 +22,14 @@
         <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl shadow-2xl">
             <label class="block text-sm text-zinc-500 mb-4 uppercase tracking-widest font-bold">Neural Prompt Input</label>
             <textarea id="promptInput" 
-                placeholder="Ex: Luxury Jewelry Store with black and gold theme..." 
+                placeholder="Ex: Cinematic UI for Garuda Legend Series..." 
                 class="w-full h-40 bg-black border border-zinc-800 rounded-2xl p-5 text-white outline-none focus:border-white transition resize-none"></textarea>
             
             <button onclick="generateUI()" id="genBtn" class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.01] active:scale-95 transition-all uppercase text-sm tracking-tighter">
                 GENERATE WORLD-CLASS UI
             </button>
         </div>
-        <p id="status" class="text-center text-zinc-600 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold"></p>
+        <p id="status" class="text-center text-zinc-600 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold">READY FOR NEURAL INPUT</p>
     </div>
 
     <script>
@@ -41,11 +42,16 @@
             const prompt = document.getElementById('promptInput').value;
             const status = document.getElementById('status');
             const btn = document.getElementById('genBtn');
-            const tunnelURL = "https://northeast-jumping-ppc-dictionaries.trycloudflare.com"; 
+            // TUNNEL URL UPDATED TO SERVEO
+            const tunnelURL = "https://934fbf8633d990a1-157-48-97-120.serveousercontent.com"; 
 
-            if(!prompt) return alert("Pehle prompt toh dalo bhai!");
+            if(!prompt) {
+                status.innerText = "PROMPT IS EMPTY, ARCHITECT!";
+                return;
+            }
 
             btn.disabled = true;
+            status.className = "text-center text-yellow-500 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold";
             status.innerText = "ESTABLISHING NEURAL LINK...";
 
             try {
@@ -56,19 +62,21 @@
                 });
 
                 if(response.ok) {
-                    status.innerText = "BUILD SUCCESSFUL! DEPLOYING TO GITHUB...";
+                    status.className = "text-center text-green-500 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold";
+                    status.innerText = "BUILD SUCCESSFUL! DEPLOYING...";
                     setTimeout(() => {
                         window.open("https://nk-digital-media.github.io/GARUD-X-Final/generated_project.html", "_blank");
                         btn.disabled = false;
-                        status.innerText = "READY FOR NEXT ARCHITECTURAL BUILD";
-                    }, 5000); 
+                        status.className = "text-center text-zinc-600 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold";
+                        status.innerText = "READY FOR NEXT BUILD";
+                    }, 2000); 
                 } else {
-                    throw new Error("Server error");
+                    throw new Error("Server communication failed");
                 }
             } catch (err) {
-                alert("Error: Link failed. Check if Termux Engine is running.");
+                status.className = "text-center text-red-500 text-[10px] mt-8 uppercase tracking-[0.3em] font-bold";
+                status.innerText = "LINK FAILED: CHECK TERMUX ENGINE";
                 btn.disabled = false;
-                status.innerText = "LINK FAILED";
             }
         }
     </script>
