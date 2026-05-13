@@ -3,85 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Gaming Lounge</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Cyberpunk Gaming Dashboard</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <style>
-        .glitch {
-            position: relative;
+        .glassmorphism {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(17, 17, 17, 0.72);
+            border-radius: 12px;
+            border: 1px solid rgba(209, 213, 219, 0.3);
         }
-        .glitch:after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
+        .neon-glow {
+            text-shadow: 0 0 5px #8f0a1a, 0 0 10px #8f0a1a, 0 0 15px #8f0a1a, 0 0 20px #490a1a, 0 0 25px #490a1a;
             color: #ff00ff;
-            background: linear-gradient(to bottom, #00ff00, #ff00ff);
-            -webkit-text-stroke: 1px #fff;
-            text-stroke: 1px #fff;
-            z-index: -1;
-            animation: glitch 5s infinite;
         }
-        @keyframes glitch {
-            0% {
-                clip: rect(0, 100%, 0, 0);
-            }
-            20% {
-                clip: rect(10px, 100%, 0, 0);
-            }
-            40% {
-                clip: rect(0, 100%, 10px, 0);
-            }
-            60% {
-                clip: rect(0, 100%, 0, 10px);
-            }
-            80% {
-                clip: rect(0, 50%, 0, 0);
-            }
-            100% {
-                clip: rect(0, 100%, 0, 0);
-            }
+        .neon-glow-green {
+            text-shadow: 0 0 5px #0a8f0a, 0 0 10px #0a8f0a, 0 0 15px #0a8f0a, 0 0 20px #0a490a, 0 0 25px #0a490a;
+            color: #00ff00;
+        }
+        .grid-background {
+            background-image: linear-gradient(45deg, #2f2f2f 25%, transparent 25%), 
+                              linear-gradient(-45deg, #2f2f2f 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #2f2f2f 75%), 
+                              linear-gradient(-45deg, transparent 75%, #2f2f2f 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px, 10px 10px, 0 0;
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <nav class="flex justify-between p-4 bg-black text-white border-b border-purple-500">
-        <h1 class="text-3xl font-bold glitch" data-text="Cyberpunk Gaming Lounge">Cyberpunk Gaming Lounge</h1>
-        <ul class="flex justify-end">
-            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Home</a></li>
-            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Games</a></li>
-            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Community</a></li>
-        </ul>
-    </nav>
-    <main class="container mx-auto p-4">
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-purple-500 p-4 rounded-md shadow-md">
-                <h2 class="text-2xl font-bold glitch" data-text="Top Games">Top Games</h2>
-                <ul>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 1</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 2</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 3</a></li>
-                </ul>
+<body class="h-screen w-screen grid place-items-center bg-gray-900">
+    <div class="grid grid-cols-3 gap-4 w-11/12 h-5/6 max-w-7xl">
+        <div class="glassmorphism p-4 rounded-lg">
+            <h1 class="neon-glow text-3xl font-bold mb-4">Cyberpunk Gaming</h1>
+            <p class="text-gray-400 text-lg mb-4">Welcome to the ultra-premium gaming dashboard.</p>
+            <button class="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                <span class="neon-glow text-lg font-bold">Play Now</span>
+            </button>
+        </div>
+        <div class="grid grid-rows-2 gap-4 h-full">
+            <div class="glassmorphism p-4 rounded-lg">
+                <h2 class="neon-glow-green text-2xl font-bold mb-4">Game Stats</h2>
+                <p class="text-gray-400 text-lg mb-4">View your game statistics and performance.</p>
+                <button class="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                    <span class="neon-glow-green text-lg font-bold">View Stats</span>
+                </button>
             </div>
-            <div class="bg-green-500 p-4 rounded-md shadow-md">
-                <h2 class="text-2xl font-bold glitch" data-text="Upcoming Events">Upcoming Events</h2>
-                <ul>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 1</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 2</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 3</a></li>
-                </ul>
+            <div class="glassmorphism p-4 rounded-lg">
+                <h2 class="neon-glow text-2xl font-bold mb-4">Leaderboards</h2>
+                <p class="text-gray-400 text-lg mb-4">Compete with other players and climb the ranks.</p>
+                <button class="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                    <span class="neon-glow text-lg font-bold">View Leaderboards</span>
+                </button>
             </div>
-            <div class="bg-purple-500 p-4 rounded-md shadow-md">
-                <h2 class="text-2xl font-bold glitch" data-text="Community News">Community News</h2>
-                <ul>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 1</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 2</a></li>
-                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 3</a></li>
-                </ul>
+        </div>
+        <div class="grid grid-rows-2 gap-4 h-full">
+            <div class="glassmorphism p-4 rounded-lg grid-background">
+                <h2 class="neon-glow-green text-2xl font-bold mb-4">Game Library</h2>
+                <p class="text-gray-400 text-lg mb-4">Browse and manage your game library.</p>
+                <button class="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                    <span class="neon-glow-green text-lg font-bold">View Library</span>
+                </button>
             </div>
-        </section>
-    </main>
-    <footer class="bg-black text-white p-4 border-t border-purple-500">
-        <p class="text-lg">&copy; 2023 Cyberpunk Gaming Lounge</p>
-    </footer>
+            <div class="glassmorphism p-4 rounded-lg">
+                <h2 class="neon-glow text-2xl font-bold mb-4">Settings</h2>
+                <p class="text-gray-400 text-lg mb-4">Customize your gaming experience.</p>
+                <button class="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                    <span class="neon-glow text-lg font-bold">View Settings</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
