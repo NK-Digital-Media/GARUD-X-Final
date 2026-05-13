@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <script>
-        // Security check: Bina login ke entry ban hai
+        // Security: No entry without login
         if(localStorage.getItem("userAuth") !== "active") {
             window.location.href = "index.html";
         }
@@ -22,10 +22,10 @@
         <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl shadow-2xl">
             <label class="block text-sm text-zinc-500 mb-4 uppercase tracking-widest font-bold">Neural Prompt Input</label>
             <textarea id="promptInput" 
-                placeholder="Ex: Luxury Jewelry Store with rose gold accents..." 
+                placeholder="Ex: Ultra-luxury Jewelry Boutique with dark mode and rose gold..." 
                 class="w-full h-40 bg-black border border-zinc-800 rounded-2xl p-5 text-white outline-none focus:border-white transition resize-none"></textarea>
             
-            <button class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all">
+            <button onclick="generateUI()" id="genBtn" class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all">
                 GENERATE WORLD-CLASS UI
             </button>
         </div>
@@ -37,6 +37,25 @@
         function logout() {
             localStorage.removeItem("userAuth");
             window.location.href = "index.html";
+        }
+
+        async function generateUI() {
+            const prompt = document.getElementById('promptInput').value;
+            const btn = document.getElementById('genBtn');
+            
+            if(!prompt) return alert("Pehle prompt toh dalo bhai!");
+
+            btn.innerText = "ESTABLISHING NEURAL LINK...";
+            btn.disabled = true;
+
+            console.log("🚀 Sending to GARUD Engine: " + prompt);
+            
+            // Abhi ke liye ye alert dega, next step mein hum ise Termux Engine se jochenge
+            setTimeout(() => {
+                alert("Prompt Received: " + prompt + "\nNext: Connecting to Termux Server...");
+                btn.innerText = "GENERATE WORLD-CLASS UI";
+                btn.disabled = false;
+            }, 1000);
         }
     </script>
 </body>
