@@ -7,7 +7,7 @@ async function run(p) {
     try {
         const res = await client.chat.completions.create({
             messages: [
-                { role: "system", content: "Return ONLY full HTML with Tailwind CDN. No markdown tags. No talk." },
+                { role: "system", content: "Return ONLY full HTML. Start with <!DOCTYPE html>. Use Tailwind CDN. No backticks. No markdown." },
                 { role: "user", content: p }
             ],
             model: "llama-3.3-70b-versatile",
@@ -15,14 +15,16 @@ async function run(p) {
 
         let html = res.choices[0].message.content;
         
-        // Sabse safe cleaning method
-        const final = html.split("`").join(""); 
+        // Solid Cleanup: Sirf <!DOCTYPE se lekar </html> tak ka hissa uthayega
+        const start = html.indexOf("<!DOCTYPE");
+        const end = html.lastIndexOf("</html>") + 7;
+        const final = html.substring(start, end);
 
         fs.writeFileSync('index.html', final);
-        console.log("✅ GARUD X: UI Updated!");
+        console.log("✅ GARUD X: UI Cleaned & Updated!");
     } catch (e) {
         console.log("❌ Error: " + e.message);
     }
 }
 
-run("Create a professional GARUD X Signup page with dark theme and blue neon buttons.");
+run("Create a high-end GARUD X Signup page. Dark glassmorphism, neon blue glow buttons, Tailwind CSS, and ultra-modern look.");
