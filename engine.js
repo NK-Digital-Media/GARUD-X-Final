@@ -1,56 +1,48 @@
 const fs = require('fs');
+const Groq = require('groq-sdk');
+const groq = new Groq({ apiKey: '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' });
 
-// GARUD X Knowledge Engine
-function buildSystem(projectName, userPrompt) {
-    console.log(`\n🚀 GARUD X is generating: ${projectName}`);
-    console.log(`📝 Logic: ${userPrompt}\n`);
-
-    // Professional Web Template (Mobile Responsive + Modern Design)
-    const webTemplate = `
+async function updatePortal() {
+    const portalHTML = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <title>${projectName} | Built by GARUD X</title>
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    <title>GARUD X | AI App Generator</title>
 </head>
-<body class="bg-slate-900 text-white antialiased">
-    <nav class="p-6 flex justify-between items-center border-b border-slate-800">
-        <div class="text-2xl font-bold tracking-tighter text-blue-500">GARUD X</div>
-        <div class="space-x-6 hidden md:block">
-            <a href="#" class="hover:text-blue-400">Features</a>
-            <a href="#" class="hover:text-blue-400">About</a>
-        </div>
-        <button class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-semibold transition">Live Demo</button>
+<body class="bg-slate-900 text-white font-sans">
+    <nav class="p-6 border-b border-slate-800 flex justify-between">
+        <h1 class="text-2xl font-bold text-blue-500">GARUD X</h1>
+        <button class="bg-blue-600 px-4 py-2 rounded">Premium Plan</button>
     </nav>
-
-    <main class="max-w-4xl mx-auto mt-20 text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-            ${projectName}
-        </h1>
-        <p class="text-xl text-slate-400 mb-10 leading-relaxed">
-            ${userPrompt}
-        </p>
-        <div class="flex flex-col md:flex-row justify-center gap-4">
-            <button class="bg-white text-slate-900 px-8 py-3 rounded-full font-bold text-lg">Confirm & Go Live</button>
-            <button class="border border-slate-700 px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-800">Reject & Regenerate</button>
+    <main class="max-w-3xl mx-auto py-20 px-6 text-center">
+        <h2 class="text-5xl font-extrabold mb-6">Build Apps in Seconds</h2>
+        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl">
+            <textarea id="pInput" class="w-full p-4 bg-slate-900 rounded-xl text-white mb-4" placeholder="Describe your app idea..."></textarea>
+            <button onclick="checkSub()" class="w-full bg-blue-600 py-4 rounded-xl font-bold text-xl">Generate & Go Live</button>
+        </div>
+        <!-- Subscription Table -->
+        <div class="mt-12 grid grid-cols-2 gap-6 text-left">
+            <div class="p-6 border border-slate-700 rounded-2xl">
+                <h4 class="font-bold">Free</h4>
+                <p class="text-2xl">₹0</p>
+                <p class="text-sm text-slate-400">1 Simple Web Page</p>
+            </div>
+            <div class="p-6 border-2 border-blue-500 rounded-2xl bg-blue-900/20">
+                <h4 class="font-bold">Pro</h4>
+                <p class="text-2xl">₹999/mo</p>
+                <p class="text-sm text-blue-300 italic">Unlimited Apps + Live Support</p>
+            </div>
         </div>
     </main>
-
-    <footer class="mt-32 p-10 border-t border-slate-800 text-center text-slate-500">
-        <p>© 2026 GARUD X AI System. All rights reserved.</p>
-    </footer>
+    <script>
+        function checkSub() {
+            alert("Payment Required! Please subscribe to Pro plan to use the AI Engine.");
+        }
+    </script>
 </body>
 </html>`;
-
-    // Saving the file
-    fs.writeFileSync('index.html', webTemplate);
-    console.log("✅ Project Generated Successfully: index.html is ready!");
-    console.log("👉 Next: Run 'ls' to see the file or proceed to Live Deployment.");
+    fs.writeFileSync('index.html', portalHTML);
+    console.log("✅ Portal Updated with Subscription UI!");
 }
-
-// Running the Engine
-buildSystem("GARUD-X-SYSTEM", "A professional automated deployment platform for next-gen developers.");
+updatePortal();
