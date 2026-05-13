@@ -1,45 +1,87 @@
-<!DOCTYPE >
-< lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Jewelry Store</title>
+    <title>Cyberpunk Gaming Lounge</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .glitch {
+            position: relative;
+        }
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #ff00ff;
+            background: linear-gradient(to bottom, #00ff00, #ff00ff);
+            -webkit-text-stroke: 1px #fff;
+            text-stroke: 1px #fff;
+            z-index: -1;
+            animation: glitch 5s infinite;
+        }
+        @keyframes glitch {
+            0% {
+                clip: rect(0, 100%, 0, 0);
+            }
+            20% {
+                clip: rect(10px, 100%, 0, 0);
+            }
+            40% {
+                clip: rect(0, 100%, 10px, 0);
+            }
+            60% {
+                clip: rect(0, 100%, 0, 10px);
+            }
+            80% {
+                clip: rect(0, 50%, 0, 0);
+            }
+            100% {
+                clip: rect(0, 100%, 0, 0);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
-    <header class="py-4">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-rose-500">Aurum</a>
-            <ul class="flex items-center space-x-4">
-                <li><a href="#" class="text-lg font-medium text-gray-300 hover:text-rose-500">Home</a></li>
-                <li><a href="#" class="text-lg font-medium text-gray-300 hover:text-rose-500">Collections</a></li>
-                <li><a href="#" class="text-lg font-medium text-gray-300 hover:text-rose-500">About</a></li>
-                <li><a href="#" class="text-lg font-medium text-gray-300 hover:text-rose-500">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="container mx-auto py-12">
-        <section class="flex flex-col items-center mb-12">
-            <h1 class="text-5xl font-extrabold text-rose-500 mb-4"> Luxury Jewelry Store</h1>
-            <p class="text-lg font-medium text-gray-300 text-center">Discover the finest jewelry pieces, crafted with precision and passion.</p>
-        </section>
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-gray-800 p-6 rounded-lg">
-                <h2 class="text-2xl font-bold text-rose-500 mb-2">Diamond Necklaces</h2>
-                <p class="text-lg font-medium text-gray-300">Explore our exquisite collection of diamond necklaces, each one a masterpiece of craftsmanship and design.</p>
+<body class="bg-black text-white">
+    <nav class="flex justify-between p-4 bg-black text-white border-b border-purple-500">
+        <h1 class="text-3xl font-bold glitch" data-text="Cyberpunk Gaming Lounge">Cyberpunk Gaming Lounge</h1>
+        <ul class="flex justify-end">
+            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Home</a></li>
+            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Games</a></li>
+            <li class="mr-6"><a href="#" class="text-lg hover:text-purple-500">Community</a></li>
+        </ul>
+    </nav>
+    <main class="container mx-auto p-4">
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-purple-500 p-4 rounded-md shadow-md">
+                <h2 class="text-2xl font-bold glitch" data-text="Top Games">Top Games</h2>
+                <ul>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 1</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 2</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">Game 3</a></li>
+                </ul>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg">
-                <h2 class="text-2xl font-bold text-rose-500 mb-2">Gold Earrings</h2>
-                <p class="text-lg font-medium text-gray-300">Our gold earrings are the perfect accessory for any occasion, from elegant events to everyday wear.</p>
+            <div class="bg-green-500 p-4 rounded-md shadow-md">
+                <h2 class="text-2xl font-bold glitch" data-text="Upcoming Events">Upcoming Events</h2>
+                <ul>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 1</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 2</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-purple-500">Event 3</a></li>
+                </ul>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg">
-                <h2 class="text-2xl font-bold text-rose-500 mb-2">Ruby Rings</h2>
-                <p class="text-lg font-medium text-gray-300">Experience the luxury of our ruby rings, featuring the finest rubies and expertly crafted settings.</p>
+            <div class="bg-purple-500 p-4 rounded-md shadow-md">
+                <h2 class="text-2xl font-bold glitch" data-text="Community News">Community News</h2>
+                <ul>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 1</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 2</a></li>
+                    <li class="py-2 border-b border-white"><a href="#" class="text-lg hover:text-green-500">News 3</a></li>
+                </ul>
             </div>
         </section>
     </main>
-    <footer class="py-4 bg-gray-800 text-center text-lg font-medium text-gray-300">
-        &copy; 2023 Aurum Luxury Jewelry Store
+    <footer class="bg-black text-white p-4 border-t border-purple-500">
+        <p class="text-lg">&copy; 2023 Cyberpunk Gaming Lounge</p>
     </footer>
 </body>
-</>
+</html>
