@@ -28,4 +28,5 @@ async function garudEngine(prompt) {
     }
 }
 
-garudEngine("Create a professional SaaS Finance Tracker landing page with dark theme and blue neon buttons.");
+garudEngine("Create a professional Auth/Signup page for 'GARUD X'. The page must have: 1. A high-end dark glassmorphism UI. 2. 'GARUD X' branding at the top in neon blue. 3. A beautiful Signup form with Email, Password, and Full Name fields. 4. A 'Create Free Account' button with a glowing effect. 5. Social login options (Google/GitHub). 6. Background should have subtle animated particles or a deep space gradient.");
+

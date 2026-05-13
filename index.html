@@ -1,39 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="h-screen bg-gray-900 flex justify-center items-center">
-    <div class="max-w-5xl mx-auto p-4 pt-6 md:p-6 lg:p-8">
-        <div class="text-center mb-12">
-            <h1 class="text-3xl text-white font-bold mb-4">Finance Tracker</h1>
-            <p class="text-lg text-gray-500">Easy and simple way to track your finances.</p>
-        </div>
-        <div class="flex flex-wrap justify-center -mx-4">
-            <div class="w-full xl:w-8/12 p-4">
-                <div class="bg-gray-800 px-6 py-8 rounded-lg shadow-2xl">
-                    <h2 class="text-xl text-white font-bold mb-4">Features</h2>
-                    <ul>
-                        <li class="text-lg text-gray-500 mb-2"><i class="fas fa-check text-blue-500 mr-2"></i> Track expenses and income</li>
-                        <li class="text-lg text-gray-500 mb-2"><i class="fas fa-check text-blue-500 mr-2"></i> Set budgets and goals</li>
-                        <li class="text-lg text-gray-500 mb-2"><i class="fas fa-check text-blue-500 mr-2"></i> Financial reports and analytics</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="w-full xl:w-4/12 p-4">
-                <div class="bg-gray-800 px-6 py-8 rounded-lg shadow-2xl">
-                    <h2 class="text-xl text-white font-bold mb-4">Get Started</h2>
-                    <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mb-4">Sign Up</button>
-                    <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Log In</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-12">
-            <p class="text-lg text-gray-500">Copyright 2023 Finance Tracker. All rights reserved.</p>
-        </div>
+<div class="h-screen w-screen bg-black bg-opacity-90 flex items-center justify-center">
+  <div class="glassmorphismsm:px-4 md:px-6 lg:px-8">
+    <div class="flex justify-center mb-4">
+      <span class="text-neonblue font-bold text-3xl">GARUD X</span>
     </div>
-</body>
-</html>
+    <div class="bg-glassmorphismrounded-3xl p-8 shadow-lg shadow-cyan-500/40">
+      <h2 class="text-2xl font-bold mb-2 text-white">Create Account</h2>
+      <form>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-200 mb-2" for="full_name">Full Name</label>
+          <input class="block w-full p-2 pl-10 text-sm text-gray-200 border border-gray-400 rounded-lg bg-gray-800 focus:ring-neonblue focus:border-neonblue" id="full_name" type="text" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-200 mb-2" for="email">Email</label>
+          <input class="block w-full p-2 pl-10 text-sm text-gray-200 border border-gray-400 rounded-lg bg-gray-800 focus:ring-neonblue focus:border-neonblue" id="email" type="email" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-200 mb-2" for="password">Password</label>
+          <input class="block w-full p-2 pl-10 text-sm text-gray-200 border border-gray-400 rounded-lg bg-gray-800 focus:ring-neonblue focus:border-neonblue" id="password" type="password" required>
+        </div>
+        <button class="create-account-button w-full p-2 text-sm font-bold text-white rounded-lg bg-neonblue hover:bg-neonblue-dark">Create Free Account</button>
+      </form>
+      <div class="social-logins mt-4">
+        <span class="text-gray-200 text-sm mb-2">Or sign up with</span>
+        <div class="flex justify-center mb-2">
+          <a class="google-login-button p-2 bg-red-600 text-white rounded-lg mr-2" href="#">Google</a>
+          <a class="github-login-button p-2 bg-gray-800 text-white rounded-lg" href="#">Github</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .glassmorphism {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+  
+  .neonblue {
+    color: #39FF14;
+  }
+  
+  .neonblue-dark {
+    color: #33CC00;
+  }
+  
+  .create-account-button {
+    animation: glowing 1500ms infinite;
+  }
+  
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14, 0 0 70px #39FF14, 0 0 80px #39FF14, 0 0 100px #39FF14;
+    }
+    50% {
+      box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 15px #39FF14, 0 0 20px #39FF14, 0 0 35px #39FF14, 0 0 60px #39FF14, 0 0 80px #39FF14;
+    }
+    100% {
+      box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14, 0 0 70px #39FF14, 0 0 80px #39FF14, 0 0 100px #39FF14;
+    }
+  }
+  
+  .google-login-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .google-login-button:hover {
+    background-color: #db4437;
+  }
+  
+  .github-login-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .github-login-button:hover {
+    background-color: #24292f;
+  }
+  
+  .bg-glassmorphism {
+    background-image: linear-gradient(to bottom, #212121, #0a0a0a);
+  }
+  
+  .text-neonblue {
+    text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14, 0 0 70px #39FF14, 0 0 80px #39FF14, 0 0 100px #39FF14;
+  }
+</style>
